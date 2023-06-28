@@ -22,6 +22,13 @@ function App() {
         })
         console.log(tasks)
     }
+    
+    function delTask(index) {
+        const newTasks = [...data]
+        newTasks.splice(index, 1);
+        setData(newTasks)
+    }
+    
 
 
 
@@ -37,11 +44,10 @@ function App() {
                     <br />
                 </form>
                 { data.map((item, index)=> (
-                    <>
-                        <input type="checkbox" />
-                        <p key={index}>{item}</p>
-                        <button className='del-btn'>Delete</button>
-                    </>
+                    <div key={index}>
+                        <p>{item}</p>
+                        <button className='del-btn' onClick={()=> delTask(index)}>Delete</button>
+                    </div>
                     
                 ))}
             </div>
