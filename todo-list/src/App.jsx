@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
     const [tasks, setTasks] = useState('')
-    const [data, setData] = useState([])
+    const [data, setData] = useState( () => {
+        const newItem = JSON.parse(localStorage.getItem('ITEM'))
+        if( newItem === null ) {
+            return []
+        } else {
+            return newItem;
+        }
+    })
 
 
     function handleChange(event) {
@@ -11,6 +18,10 @@ function App() {
         setTasks(value)
         console.log(tasks)
     }
+    
+    useEffect( () => {
+        localStorage.setItem('ITEM', JSON.stringify(data))
+    }, [data])
 
     function handleSubmit(event) {
         event.preventDefault()
