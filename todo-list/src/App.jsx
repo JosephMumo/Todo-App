@@ -55,7 +55,8 @@ function App() {
                     <br />
                 </form>
                 { data.map((item, index)=> (
-                    <div key={index}>
+                    <div key={index} className='my--box'>
+                        <input type='checkbox' onClick={e => e.target.checked}></input>
                         <p>{item}</p>
                         <button className='del-btn' onClick={()=> delTask(index)}>Delete</button>
                     </div>

@@ -45,3 +45,6 @@ button {
     background-color: red;
     margin-bottom: 10px;
 }
+input[ type=checkbox ] {
+    cursor: pointer;
+}
